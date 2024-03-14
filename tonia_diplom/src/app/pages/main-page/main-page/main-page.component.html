@@ -1,0 +1,44 @@
+<!-- main-page.component.html -->
+<div class="content">
+    <p class="ptitle"><span class="title">Паводок</span> - це природна стихійна явище, яке характеризується значним затопленням місцевості водою в результаті різкого підйому річок, струмків або водосховищ, зазвичай спричиненого великими дощами, талією снігу або заторами льоду.</p>
+    <p class="ptitle">Контроль за ситуацією на річках та інших водоймах є критично важливим аспектом управління ризиком паводків. 
+        <br><br> Він сприяє ранньому виявленню загроз, прогнозуванню паводкових ризиків, організації реагування на екстрені ситуації.</p>
+    <p routerLink="/info" class="info_link">Детальніше про превентивні заходи проти паводків, а також правильні дії під час них.</p>
+    <hr>
+    <p class="sub_title">Ситуація на річках України:</p>
+
+    <!-- rivers.component.html -->
+    <div class="search">
+        <label for="filterInput">Пошук:</label>
+        <input type="text" id="filterInput" [(ngModel)]="filterName">
+        <button (click)="applyFilter()">Фільтр</button>
+      </div>
+      
+      <p *ngIf="filterApplied">Функціональність ще не додано....</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Date & Time</th>
+      <th>Water Level</th>
+      <th>Photo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let river of rivers">
+      <td>{{ river.name }}</td>
+      <td>{{ river.location }}</td>
+      <td>{{ river.dateTime | date:'dd/MM/yyyy, HH:mm' }}</td>
+      <td>{{ river.waterLevel }}</td>
+      <td><img [src]="river.photoUrl" alt="Photo of {{ river.name }}"></td> <!-- Display the photo -->
+
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+  
